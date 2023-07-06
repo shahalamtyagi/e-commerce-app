@@ -1,9 +1,9 @@
-import { EcommerceNavbar } from "./navbar"
+import { Navbar } from "./Navbar"
 
 export const Layout = ()=>{
     return(
         <div>
-             <EcommerceNavbar/>
+             <Navbar/>
         </div>
            
        
