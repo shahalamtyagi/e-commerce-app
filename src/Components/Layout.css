@@ -1,0 +1,14 @@
+.main-body-container{
+    display: flex;
+  flex-direction: column;
+  /* flex-grow: 1; */
+    height: 100vh;
+}
+.layout-body{
+
+    display: flex;
+    flex-grow: 1;
+}
+.content {
+     width: 100%;
+ }

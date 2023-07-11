@@ -1,51 +1,38 @@
 import { CgProfile } from "react-icons/cg";
-import { AiOutlineHeart } from "react-icons/ai";
-import { BsBag } from "react-icons/bs";
-import { AiOutlineSearch } from "react-icons/ai";
 import "./Navbar.css";
+import { BagIcon, WishIcon } from "./Wishicon";
 export const Navbar = () => {
   return (
     <div className="navbar-wrapper">
-      <h1>E-SHOP</h1>
+      <h1 className="logo-headding">E-SHOP</h1>
       <div className="navbar-item-wrapper">
-        <a className="navbar-item-link"href="/">Men</a>
-        <a className="navbar-item-link"href="/">Women</a>
-        <a className="navbar-item-link"href="/">Kids</a>
-        <a className="navbar-item-link"href="/">Home & Living</a>
-        <a className="navbar-item-link"href="/">Beauty</a>
-        <a className="navbar-item-link"href="/">Studio</a>
+        <a href="/" className="navbar-item-link">Men</a>
+        <a href="/" className="navbar-item-link">Women</a>
+        <a href="/" className="navbar-item-link">Kids</a>
+        <a href="/" className="navbar-item-link">Home</a>
+        <a href="/" className="navbar-item-link">Beauty</a>
+        <a href="/" className="navbar-item-link">Studio</a>
       </div>
-      <div className="link-wrapper">
-        <span>
-          <AiOutlineSearch className="search-icon" />
-        </span>
+
+      <div className="input-wrapper">
         <input
           type="search"
           className="navbar-input"
           placeholder="Search for product, brand..."
         />
+      </div>
 
-<a className="/" href="/">
-          <span>
-            <CgProfile className="profile-icon" />
-          </span>
-          
+      <div className="link-wrapper">
+        <a className="navbar-link" href="/">
+          <CgProfile className="navbar-icon"  />
         </a>
-        <a className="/" href="/">
-          <span>
-            <AiOutlineHeart className="heart-wish-icon" />
-          </span>
-         
+        <a className="navbar-link" href="/">
+          <WishIcon className="navbar-icon"/>
         </a>
-        <a className="/" href="/">
-          <span>
-            <BsBag className="bag-icon" />
-          </span>
-        
+        <a className="navbar-link" href="/">
+          <BagIcon className="navbar-icon" />
         </a>
-</div>
-       
-        </div>
-
+      </div>
+    </div>
   );
 };

@@ -1,0 +1,16 @@
+.sidebar-wrapper{
+    display: flex;
+    flex-basis: 200px;
+    flex-direction: column;
+    border-right: 3px solid whitesmoke;
+    align-items: center;
+}
+.sidebar-links{
+    font-size: larger;
+color: black;
+text-decoration: none;
+padding: 6px 0 ;
+width: 8rem;
+text-align: center;
+
+}

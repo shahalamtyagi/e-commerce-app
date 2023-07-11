@@ -1,0 +1,101 @@
+/* .cardcontainer{
+    display: flex;
+    flex-direction: column;
+width: 10rem;
+border-radius: 1rem;
+margin: 0.5rem;
+height: fit-content;
+background-color: white;
+border: 1px solid black;
+gap: 1rem;
+}
+.cardimage{
+    width: 100%;
+    border-radius: 1rem ;
+}
+.cardtitle{
+    text-align: center;
+    margin: 5px 5px;
+}
+.cardbtn{
+    text-align: center;
+    text-decoration: none;
+  margin: 0.5rem;
+    background-color: blue;
+    padding: 0.5rem 1rem;
+border-radius: 5px;
+color: white;
+}
+.btncontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+.card-container{
+    align-items: center;
+    border: 1px solid var(--primary-color);
+    text-align: center;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 1rem;
+}
+.card-img{
+    width: 100%;
+    height: 100%;
+}
+.cheked{
+    color: blue;
+}
+.star {
+    font-size: 20px;
+}
+.btn{
+    width: 100%;
+    height: 2rem;
+    background-color: var(--primary-color);
+    color: black;
+    cursor: pointer;
+}
+.bag-icon-card{
+    font-size: larger;
+    padding-left: 2rem;
+}
+.btn-container{
+    display: flex;
+    gap: 1rem;
+    padding: 5px 0px;
+}
+.main-container{
+    width: 25%;
+    /* height: 1rem; */
+}
+
+.imgcard-main-wrapper{
+  display: flex;
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+img{
+    width: 50%;
+    height: 50%;
+}
+.text-wrapper{
+    /* width: 50%; */
+border: 1px solid var(--primary-color);
+text-align: center;
+background-color: var(--primary-color);
+}
+.text-wrapper h3{
+    color: darkgray;
+}
+.img-wrapper{
+    display: flex;
+    align-items: center;
+padding: 2rem;
+}
+@media (max-width:600px){
+    .text-wrapper{
+        min-width: 2rem;
+    }
+}

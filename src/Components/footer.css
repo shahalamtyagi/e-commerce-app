@@ -1,0 +1,14 @@
+
+.footer-container{
+    display: flex;
+    flex-basis: 70px;
+    background-color: var(--primary-color);
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    color: black;
+}
+.footer-icon{
+    color:black;
+    font-size: larger;
+}

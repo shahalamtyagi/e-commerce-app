@@ -1,12 +1,14 @@
 import "./App.css";
-import { Layout } from "./Components/Layout";
-
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { LandingPage } from "./Components/LandingPage";
 
 function App() {
   return (
-    <div>
-      <Layout/>
-    </div>
+   <Router>
+    <Routes>
+    <Route path="/" Component={LandingPage} />
+    </Routes>
+   </Router>
   );
 }
 
