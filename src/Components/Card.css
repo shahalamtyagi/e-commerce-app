@@ -1,101 +1,162 @@
-/* .cardcontainer{
-    display: flex;
-    flex-direction: column;
-width: 10rem;
-border-radius: 1rem;
-margin: 0.5rem;
-height: fit-content;
-background-color: white;
-border: 1px solid black;
-gap: 1rem;
-}
-.cardimage{
-    width: 100%;
-    border-radius: 1rem ;
-}
-.cardtitle{
-    text-align: center;
-    margin: 5px 5px;
-}
-.cardbtn{
-    text-align: center;
-    text-decoration: none;
+.cardcontainer {
+  display: flex;
+  flex-direction: column;
+  width: 10rem;
+  border-radius: 1rem;
   margin: 0.5rem;
-    background-color: blue;
-    padding: 0.5rem 1rem;
-border-radius: 5px;
-color: white;
+  height: fit-content;
+  background-color: white;
+  border: 1px solid black;
+  gap: 1rem;
 }
-.btncontainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-} */
+.cardimage {
+  width: 100%;
+  border-radius: 1rem;
+}
+.cardtitle {
+  text-align: center;
+  margin: 5px 5px;
+}
+.cardbtn {
+  text-align: center;
+  text-decoration: none;
+  margin: 0.5rem;
+  background-color: blue;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  color: white;
+}
+.btncontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-.card-container{
-    align-items: center;
-    border: 1px solid var(--primary-color);
-    text-align: center;
-    padding: 1rem;
-    margin: 1rem;
-    border-radius: 1rem;
+.card-container {
+  align-items: center;
+  border: 1px solid var(--primary-color);
+  text-align: center;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  width: 40vh;
+    height: 70vh;
 }
-.card-img{
-    width: 100%;
-    height: 100%;
-}
-.cheked{
-    color: blue;
+.cheked {
+  color: blue;
 }
 .star {
-    font-size: 20px;
+  font-size: 20px;
 }
-.btn{
-    width: 100%;
-    height: 2rem;
-    background-color: var(--primary-color);
-    color: black;
-    cursor: pointer;
+.bag-icon-card {
+  font-size: larger;
+  padding-left: 2rem;
 }
-.bag-icon-card{
-    font-size: larger;
-    padding-left: 2rem;
-}
-.btn-container{
-    display: flex;
-    gap: 1rem;
-    padding: 5px 0px;
-}
-.main-container{
-    width: 25%;
-    /* height: 1rem; */
+.btn-container {
+  display: flex;
+  gap: 1rem;
+  padding: 5px 0px;
 }
 
-.imgcard-main-wrapper{
+
+
+
+
+.main-container-card {
+  height: 23rem;
+  width: 13rem;
+  background-color: whitesmoke;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
+}
+.image-card{
+  width: 100%;
+  height: 12rem;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.image-cost{
+font-weight: bold;
+color:green
+}
+.card-text-wrapper{
+ text-align: center;
+
+}
+.btn-wrapper{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ gap: 2px;
+ align-items: center;
+}
+.cart-btn{
+  padding: 2px 4rem;
+  background-color: var(--primary-color);
+  border-radius: 4px;
+}
+.wishlist-btn{
+  padding: 2px 3.4rem;
+  background-color: var(--primary-color);
+  border-radius: 4px;
+}
+p{
+  margin: .75rem;
+}
+.title{
+
+}
+
+
+
+
+
+
+
+.imgcard-main-wrapper {
   display: flex;
-    padding: 1rem;
-    flex-wrap: wrap;
+  padding: 1rem;
 }
-img{
-    width: 50%;
-    height: 50%;
+img {
+  width: 50%;
+  height: 10rem;
 }
-.text-wrapper{
-    /* width: 50%; */
-border: 1px solid var(--primary-color);
-text-align: center;
-background-color: var(--primary-color);
+.text-wrapper {
+  border: 1px solid var(--primary-color);
+  text-align: center;
+  background-color: var(--primary-color);
 }
-.text-wrapper h3{
-    color: darkgray;
+.text-wrapper h3 {
+  color: darkgray;
 }
-.img-wrapper{
-    display: flex;
-    align-items: center;
-padding: 2rem;
+.img-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
 }
-@media (max-width:600px){
-    .text-wrapper{
-        min-width: 2rem;
-    }
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 16rem;
+}
+.card img {
+  width: 100%;
+  height: 12rem;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  width: 100%;
+  align-items: center;
+}
+@media (max-width: 800px) {
+  .card img {
+    height: 10rem;
+  }
+  .card{
+    width: 22rem;
+  }
 }

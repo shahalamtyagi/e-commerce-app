@@ -1,0 +1,9 @@
+.image-card-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 4rem;
+    justify-content: center;
+    text-align: center;
+  }
+  

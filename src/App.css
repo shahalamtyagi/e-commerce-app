@@ -1,3 +1,11 @@
+
+  :root {
+    --primary-color: gainsboro;
+    --secoundary-color: black;
+    --tertiary-color: whitesmoke;
+}
+  
+
 .App {
   text-align: center;
 }

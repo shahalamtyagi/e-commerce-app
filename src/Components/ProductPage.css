@@ -1,0 +1,20 @@
+@media(max-width:800px){
+    .e-shop-sidebar-wrapper{
+      display: none;
+    }
+    .product-item{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+.product-item{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem;
+gap: 5rem;
+}
+.sidebar-and-card-wrapper{
+    display: flex;
+    height: 100%;
+}

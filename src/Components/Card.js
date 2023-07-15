@@ -1,23 +1,29 @@
+import { AiFillStar } from "react-icons/ai";
 import "./Card.css";
-export const WatchCard = () => {
+export const WatchCard = (props) => {
+  const { item } = props;
+  const { price, title, author, src } = item;
   return (
-    <div className="main-container">
-      <div className="card-container">
-        <img
-          className="card-img"
-          src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8d2F0Y2h8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
-          alt="watch image"
-        />
-        <h4 className="image-name">Watch</h4>
-        <p>Men multi function watch</p>
-        <h5 className="image-cost">$50.10</h5>
-       
-        <div className="btn-container">
-          <button type="btn" className="btn">
-            Add to Card
+    <div className="main-container-card">
+      <img className="image-card" src={src} alt="watch image" />
+
+      <div className="card-text-wrapper">
+        <p className="image-name">
+          <b className="title">{title}</b>
+        </p>
+        <p>{author}</p>
+        <p className="image-cost">Offer-Price:{price}</p>
+      </div>
+
+      <div className="btn-wrapper">
+        <div>
+          <button type="btn" className="cart-btn">
+            Add to Cart
           </button>
-          <button type="btn" className="btn">
-            Add to card
+        </div>
+        <div>
+          <button type="btn" className="wishlist-btn">
+            Add to Wishlist
           </button>
         </div>
       </div>
@@ -25,29 +31,22 @@ export const WatchCard = () => {
   );
 };
 
-export const ImgCard = ()=>{
-  return(
-    <div className=" imgcard-main-wrapper">
-      <div className="img-wrapper">
-       <img src="https://images.unsplash.com/photo-1534030347209-467a5b0ad3e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWVufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"/>
-       <div className="text-wrapper">
-       <h3>New Brands</h3>
-       <p>Summer Collection</p>
-       <p>Check out our best Summer Collection to stay warm in style this season</p>
-       </div>
+export const ImgCard = () => {
+  return (
+    <div class="card">
+      <img
+        src="https://images.unsplash.com/flagged/photo-1568004614679-c938da0922fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHNob3BwaW5nJTIwY2FydHN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d29tZW4lMjBzaG9wcGluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60://images.unsplash.com/photo-1584953528649-b522a1b499b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDl8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60://plus.unsplash.com/premium_photo-1661372041123-1eda2823211e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fG1hcmtldCUyMHBvaW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YWlycG9kc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+        alt="Avatar"
+      />
+      <div class="container">
+        <h4>
+          <b>Summer & Winter</b>
+        </h4>
+        <p>Online Shopping is better</p>
       </div>
-      <div className="img-wrapper">
-       <img src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1lbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"/>
-       <div className="text-wrapper">
-       <h3>New Brands</h3>
-       <p>Summer Collection</p>
-       <p>Check out our best Summer Collection to stay warm in style this season</p>
-       </div>
-      </div>
-      
     </div>
-  )
-}
+  );
+};
 
 // export const AirpodCard = () =>{
 //     return(

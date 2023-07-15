@@ -1,7 +1,4 @@
-:root {
-    --primary-color: gainsboro;
-    --secoundary-color: black;
-}
+
 @media(max-width: 600px){
     .navbar-input{
         display: none;
@@ -56,6 +53,15 @@
     margin: 1rem;
         text-decoration: none;
         color: var(--secoundary-color);
+    }
+    .logo-image{
+        width: 4rem;
+        height: 2rem;
+    }
+    .product-link{
+        text-decoration: none;
+        color: green;
+        font-size: 10px;
     }
 
  

@@ -1,16 +1,15 @@
-.sidebar-wrapper{
+.e-shop-sidebar-wrapper{
     display: flex;
     flex-basis: 200px;
     flex-direction: column;
     border-right: 3px solid whitesmoke;
-    align-items: center;
-}
-.sidebar-links{
-    font-size: larger;
-color: black;
-text-decoration: none;
-padding: 6px 0 ;
-width: 8rem;
-text-align: center;
+    width: 30%;
+    margin-top: 2px;
+    background-color: whitesmoke;
+  padding: 1rem;
 
+}
+.sidebar-top-headding{
+    display: flex;
+    justify-content: space-between;
 }
