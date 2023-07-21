@@ -1,20 +1,21 @@
-@media(max-width:800px){
-    .e-shop-sidebar-wrapper{
-      display: none;
-    }
-    .product-item{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+@media (max-width: 800px) {
+  .e-shop-sidebar-wrapper {
+    display: none;
   }
-.product-item{
+  .product-item {
     display: flex;
-    flex-wrap: wrap;
-    margin: 1rem;
-gap: 5rem;
+    align-items: center;
+    justify-content: center;
+  }
 }
-.sidebar-and-card-wrapper{
-    display: flex;
-    height: 100%;
+.product-item {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1rem;
+  gap: 3rem;
+  padding-left: 2rem;
+}
+.sidebar-and-card-wrapper {
+  display: flex;
+  height: 100%;
 }

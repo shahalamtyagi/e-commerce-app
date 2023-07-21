@@ -2,7 +2,7 @@ import "./Image.css"
 export const LandingPageImage =()=>{
     return(
     <div className="image-slider">
-<img src="https://media.istockphoto.com/id/1444336507/photo/online-shopping-concept-young-female-entrepreneur-happy-asian-sme-business-owner-preparing.webp?b=1&s=170667a&w=0&k=20&c=ZJ_EGGfj-u2wLbRkuD0e3mJlxfGmyRNJwlbo7v5hTDY=" alt="image"/>
+<img src="https://images.unsplash.com/photo-1591085686350-798c0f9faa7f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHNob3BwaW5nJTIwbWFsbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="image"/>
     </div>
         
     )

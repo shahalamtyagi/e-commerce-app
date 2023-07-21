@@ -16,9 +16,12 @@ export const Navbar = () => {
   []);
   return (
     <div className="navbar-wrapper">
-      <h1 className="logo-headding">E-SHOP</h1>
+       <div>
+      <Link to="/Landingpage"className="e-shop-link"><b>E-SHOP</b></Link>
+      </div>
+      {/* <h1 className="logo-headding">E-SHOP</h1> */}
       <div>
-      <Link className="product-link"href=""><b>Product</b></Link>
+      <Link to="/Productpage"className="product-link"><b>PRODUCT</b></Link>
       </div>
       
       <div className="navbar-item-wrapper">
@@ -45,15 +48,15 @@ export const Navbar = () => {
       </div>
 
       <div className="link-wrapper">
-        <a className="navbar-link" href="/">
+        <Link to="/LoginPage" className="navbar-link">
           <CgProfile className="navbar-icon" />
-        </a>
-        <a className="navbar-link" href="/">
+        </Link>
+        <Link to="/wishlistpage"className="navbar-link" href="/">
           <WishIcon className="navbar-icon" />
-        </a>
-        <a className="navbar-link" href="/">
+        </Link>
+        <Link to="/CartPage" className="navbar-link" href="/">
           <BagIcon className="navbar-icon" />
-        </a>
+        </Link>
       </div>
     </div>
   );

@@ -1,0 +1,39 @@
+.cartpage{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    background-size: cover;
+    background-color: aliceblue;
+    align-items: center;
+    justify-content: center;
+  }
+  .cart-page-wrapper{
+    display: flex;
+  flex-direction: column;
+  background-position: center;
+  border-radius: .5rem;
+  height: 300px;
+  width: 250px;
+  background-color:gainsboro;
+  color: var(--secoundary-color);
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+  }
+  .blank-div{
+    width: 100%;
+    height: 2px;
+    background-color: var(--secoundary-color);
+  }
+  .item-price{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    font-weight: bold;
+  }
+  .proceed-btn{
+    padding: 4px 2rem;
+    border-radius: 1rem;
+    background-color: aliceblue;
+  }

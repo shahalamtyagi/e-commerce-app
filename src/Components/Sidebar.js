@@ -1,5 +1,15 @@
+import {CgMenu} from "react-icons/cg"
+import { useState } from "react";
+import { getData } from "./ResuableFunction";
+import { useEffect } from "react";
 import "./Sidebar.css";
 export const Sidebar = () => {
+  const [CategoryData ,setcategoryData] = useState({})
+  const categoryApiurl = "/api/categories"
+  useEffect(()=>{
+    getData(categoryApiurl, setcategoryData)
+  },[]);
+  console.log(CategoryData)
   return (
     <div className="e-shop-sidebar-wrapper">
       <div className="sidebar-top-headding">
@@ -19,24 +29,18 @@ export const Sidebar = () => {
       </div>
 
       <h3>Category</h3>
-      <form className="sidebar-check-box-wrapper">
-        <div>
+     {
+      CategoryData.categories?.map((item)=>{
+        return(
+          <div key={item.id}>
           <input type="checkbox" id="men-label" name="men-label" value="men"/>
-<label for="men-label">Men</label>
+<label for="men-label">{item.categoryName
+}</label>
         </div>
-        <div>
-          <input type="checkbox" id="Women-label" name="women-label" value="women"/>
-          <label for="Women-label">Women</label>
-        </div>
-        <div>
-          <input type="checkbox" id="kids-label" name="kids-label"  value="kids"/>
-          <label for="kids-label">Kids</label>
-        </div>
-        <div>
-          <input type="checkbox" id="home-label"  name="home-label" value="home"/>
-          <label for="home-label">Home</label>
-        </div>
-      </form>
+        )
+      })
+     }
+     
 
       <div className="sidebar-rating-wrapper">
         <h3>Rating</h3>
