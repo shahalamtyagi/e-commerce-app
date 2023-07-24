@@ -6,6 +6,38 @@ import { v4 as uuid } from "uuid";
 
 export const products = [
   {
+    src:"https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/x/i/q/s-wx-d-pocket-102-grey-woxen-original-imagmb2ejntmmc2f.jpeg?q=70",
+    _id: uuid(),
+    title: "Collar casual shirt",
+    author: "Shiv Khera",
+    price: "429",
+    categoryName: "Woxen",
+  },
+  {
+    src:"https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/m/o/t/l-st1-vebnor-original-imagmsyxhvkrfjgz.jpeg?q=70",
+    _id: uuid(),
+    title: "Mandarin Collar shirt",
+    author: "Webnor",
+    price: "369",
+    categoryName: "Woxen",
+  },
+  {
+    src:"https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/x/i/q/s-wx-d-pocket-102-grey-woxen-original-imagmb2ejntmmc2f.jpeg?q=70",
+    _id: uuid(),
+    title: "Collar casual shirt",
+    author: "Shiv Khera",
+    price: "429",
+    categoryName: "Woxen",
+  },
+  {
+    src:"https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/m/o/t/l-st1-vebnor-original-imagmsyxhvkrfjgz.jpeg?q=70",
+    _id: uuid(),
+    title: "Mandarin Collar shirt",
+    author: "Webnor",
+    price: "369",
+    categoryName: "Woxen",
+  },
+  {
     src:"https://images.unsplash.com/photo-1565084888279-aca607ecce0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8bWVuJTIwamVhbnN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
     _id: uuid(),
     title: "You Can WIN",

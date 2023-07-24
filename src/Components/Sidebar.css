@@ -13,3 +13,10 @@
     display: flex;
     justify-content: space-between;
 }
+.clear-link{
+  text-decoration: none;
+  color: black;
+}
+.clear-link :hover{
+  font-size: larger;
+}

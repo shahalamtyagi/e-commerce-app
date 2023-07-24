@@ -1,8 +1,29 @@
 import { AiFillStar } from "react-icons/ai";
 import "./Card.css";
+import { postcall, getData } from "./ResuableFunction";
+import { useEffect ,useState} from "react";
+
 export const WatchCard = (props) => {
+  const [ wishData , setwishData] = useState({});
   const { item } = props;
   const { price, title, author, src } = item;
+
+
+  const addtoWishlistHandler = async()=>{
+    const requestBody = {
+      product: item,
+    };
+    const response = await postcall(wishlistApiUrl,requestBody)
+    console.log(response);
+  }
+  
+
+  const wishlistApiUrl = "/api/user/wishlist"
+  useEffect(()=>{
+    getData(wishlistApiUrl, setwishData);
+        console.log(wishData);
+  },[])
+
   return (
     <div className="main-container-card">
       <img className="image-card" src={src} alt="watch image" />
@@ -22,7 +43,7 @@ export const WatchCard = (props) => {
           </button>
         </div>
         <div>
-          <button type="btn" className="wishlist-btn">
+          <button onClick={addtoWishlistHandler} type="btn" className="wishlist-btn">
             Add to Wishlist
           </button>
         </div>

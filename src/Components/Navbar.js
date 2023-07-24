@@ -8,35 +8,33 @@ export const Navbar = () => {
   const api = "/api/categories";
   useEffect(() => {
     fetch(api)
-      .then((response)=>response.json())
+      .then((response) => response.json())
       .then((data) => {
         setproductapi(data.categories);
       });
-  },
-  []);
+  }, []);
   return (
     <div className="navbar-wrapper">
-       <div>
-      <Link to="/Landingpage"className="e-shop-link"><b>E-SHOP</b></Link>
+      <div>
+        <Link to="/Landingpage" className="e-shop-link">
+          <b>E-SHOP</b>
+        </Link>
       </div>
       {/* <h1 className="logo-headding">E-SHOP</h1> */}
       <div>
-      <Link to="/Productpage"className="product-link"><b>PRODUCT</b></Link>
+        <Link to="/Productpage" className="product-link">
+          <b>PRODUCT</b>
+        </Link>
       </div>
-      
+
       <div className="navbar-item-wrapper">
-      {productapi.map((item) => {
-        return (
-          <Link to ="Men"className="navbar-item-link" key={item.id}>
-            {item.categoryName}
-          </Link>
-        );
-      })}
-        {/* <a href="/" className="navbar-item-link">Women</a>
-        <a href="/" className="navbar-item-link">Kids</a>
-        <a href="/" className="navbar-item-link">Home</a>
-        <a href="/" className="navbar-item-link">Beauty</a>
-        <a href="/" className="navbar-item-link">Studio</a> */}
+        {productapi.map((item) => {
+          return (
+            <Link to="Men" className="navbar-item-link" key={item.id}>
+              {item.categoryName}
+            </Link>
+          );
+        })}
       </div>
 
       <div className="input-wrapper">
@@ -51,7 +49,7 @@ export const Navbar = () => {
         <Link to="/LoginPage" className="navbar-link">
           <CgProfile className="navbar-icon" />
         </Link>
-        <Link to="/wishlistpage"className="navbar-link" href="/">
+        <Link to="/wishlistpage" className="navbar-link" href="/">
           <WishIcon className="navbar-icon" />
         </Link>
         <Link to="/CartPage" className="navbar-link" href="/">

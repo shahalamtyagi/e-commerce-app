@@ -1,35 +1,23 @@
-
 import { createContext, useReducer } from "react";
-import { Button } from "./Components/Button";
 
-export const  CountContext = createContext();
+export const AppContext = createContext();
 
-const initialState = 0;
-const reducer = (state , action) =>{
-  switch(action){
-    case "increase":
-        return state + 1
-        case "decrease"  :
-            return state - 1
-            default :break;
+const initialState = { count: 0 };
+const reducer = (state, action) => {
+  switch (action) {
   }
+};
 
+export const Provider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-}
-
- export const UseReducer = () =>{
-
-    const [state, dispatch] = useReducer(reducer, initialState);
-
-    return(
-        <>
-        <div>
-            <p>{state}</p>
-            <CountContext.Provider value={{state , dispatch}}>
-            <Button/>
-
-            </CountContext.Provider>
-        </div>
-        </>
-    )
-}
+  return (
+    <>
+      <div>
+        <AppContext.Provider value={{ state, dispatch }}>
+          {children}
+        </AppContext.Provider>
+      </div>
+    </>
+  );
+};

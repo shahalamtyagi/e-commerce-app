@@ -1,7 +1,7 @@
-import {CgMenu} from "react-icons/cg"
 import { useState } from "react";
 import { getData } from "./ResuableFunction";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Sidebar.css";
 export const Sidebar = () => {
   const [CategoryData ,setcategoryData] = useState({})
@@ -9,12 +9,11 @@ export const Sidebar = () => {
   useEffect(()=>{
     getData(categoryApiurl, setcategoryData)
   },[]);
-  console.log(CategoryData)
   return (
     <div className="e-shop-sidebar-wrapper">
       <div className="sidebar-top-headding">
         <h3>Filter</h3>
-        <h3 className="clear-heading">clear</h3>
+        <h3 className="clear-heading"><Link to= "" className="clear-link">Clear </Link> </h3>
       </div>
       <div>
         <h3>Price</h3>

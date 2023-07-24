@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { AirpodCard, WatchCard } from "./Card";
+import { WatchCard } from "./Card";
 import { Layout } from "./Layout";
 import { Sidebar } from "./Sidebar";
 import "./ProductPage.css"

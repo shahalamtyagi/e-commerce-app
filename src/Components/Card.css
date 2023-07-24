@@ -94,11 +94,13 @@ color:green
   padding: 2px 4rem;
   background-color: var(--primary-color);
   border-radius: 4px;
+  cursor: pointer;
 }
 .wishlist-btn{
   padding: 2px 3.4rem;
   background-color: var(--primary-color);
   border-radius: 4px;
+  cursor: pointer;
 }
 p{
   margin: .75rem;
