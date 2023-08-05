@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 
 import { makeServer } from "./server";
-import { Provider} from "./count";
+import { Provider} from "./Context";
 // Call make Server
 makeServer();
 

@@ -1,10 +1,16 @@
 import { AiFillStar } from "react-icons/ai";
 import "./Card.css";
 import { postcall, getData } from "./ResuableFunction";
-import { useEffect ,useState} from "react";
+import { useContext, useEffect ,useState} from "react";
+import axios from "axios";
+import { AppContext } from "../Context";
 
 export const WatchCard = (props) => {
-  const [ wishData , setwishData] = useState({});
+  const context= useContext(AppContext)
+  const {dispatch} = context
+  const [ wishData , setwishData] = useState([]);
+  const [ cartData , setcartData] = useState([]);
+
   const { item } = props;
   const { price, title, author, src } = item;
 
@@ -13,16 +19,57 @@ export const WatchCard = (props) => {
     const requestBody = {
       product: item,
     };
+    const encodedToken = localStorage.getItem("encodedToken");
+
+    const requestHeaders = {
+      headers: {
+        authorization: encodedToken,
+      },
+    };
     const response = await postcall(wishlistApiUrl,requestBody)
-    console.log(response);
+    if (response.status===201 || 200) {
+    const response = await axios.get(wishlistApiUrl, requestHeaders);
+      dispatch({type: "get_wishlist",payload : response.data.wishlist.length})
+    }
   }
-  
 
   const wishlistApiUrl = "/api/user/wishlist"
   useEffect(()=>{
     getData(wishlistApiUrl, setwishData);
         console.log(wishData);
   },[])
+
+  // for cart
+  const addtocartHandler = async()=>{
+    // const [inCart , setinCart]= useState("")
+    // const buttonName = inCart ? "Remove From Cart": "Add to cart";
+    // const addinCart = ()=>{
+    //   setinCart(!inCart)
+    // }
+    const requestBody = {
+      product: item,
+    };
+
+    const encodedToken = localStorage.getItem("encodedToken");
+
+    const requestHeaders = {
+      headers: {
+        authorization: encodedToken,
+      },
+    };
+    const response = await postcall(cartApiUrl,requestBody)
+    if (response.status===201 || 200) {
+      const response = await axios.get(cartApiUrl, requestHeaders);
+        dispatch({type: "get_cartitem",payload : response.data.cart.length})
+      }
+  }
+  const cartApiUrl = "/api/user/cart"
+  useEffect(()=>{
+    getData(cartApiUrl, setcartData);
+        console.log(cartData);
+  },[])
+
+ 
 
   return (
     <div className="main-container-card">
@@ -38,7 +85,7 @@ export const WatchCard = (props) => {
 
       <div className="btn-wrapper">
         <div>
-          <button type="btn" className="cart-btn">
+          <button onClick={addtocartHandler}type="btn" className="cart-btn">
             Add to Cart
           </button>
         </div>
