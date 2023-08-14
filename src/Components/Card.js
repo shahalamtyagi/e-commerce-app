@@ -1,21 +1,20 @@
 import { AiFillStar } from "react-icons/ai";
 import "./Card.css";
 import { postcall, getData } from "./ResuableFunction";
-import { useContext, useEffect ,useState} from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AppContext } from "../Context";
 
 export const WatchCard = (props) => {
-  const context= useContext(AppContext)
-  const {dispatch} = context
-  const [ wishData , setwishData] = useState([]);
-  const [ cartData , setcartData] = useState([]);
+  const context = useContext(AppContext);
+  const { dispatch } = context;
+  const [wishData, setwishData] = useState([]);
+  const [cartData, setcartData] = useState([]);
 
   const { item } = props;
-  const { price, title, author, src } = item;
+  const { price, title, author, src, _id } = item;
 
-
-  const addtoWishlistHandler = async()=>{
+  const addtoWishlistHandler = async () => {
     const requestBody = {
       product: item,
     };
@@ -26,26 +25,44 @@ export const WatchCard = (props) => {
         authorization: encodedToken,
       },
     };
-    const response = await postcall(wishlistApiUrl,requestBody)
-    if (response.status===201 || 200) {
-    const response = await axios.get(wishlistApiUrl, requestHeaders);
-      dispatch({type: "get_wishlist",payload : response.data.wishlist.length})
+    if (wishlistName === "Add To Wishlist") {
+      const response = await postcall(wishlistApiUrl, requestBody);
+      if (response.status === 201 || 200) {
+        const response = await axios.get(wishlistApiUrl, requestHeaders);
+        dispatch({
+          type: "get_wishlist",
+          payload: response.data.wishlist.length,
+        });
+        setwishlistName("Remove wishlist");
+      }
     }
-  }
+    if (wishlistName === "Remove wishlist") {
+      const wishlistdeleteApiUrl = `/api/user/wishlist/${_id}`;
+      const encodedToken = localStorage.getItem("encodedToken");
+      const requestHeaders = {
+        headers: {
+          authorization: encodedToken,
+        },
+      };
+      const response = await axios.delete(wishlistdeleteApiUrl, requestHeaders);
 
-  const wishlistApiUrl = "/api/user/wishlist"
-  useEffect(()=>{
+      if (response.status === 201 || 200) {
+        dispatch({
+          type: "get_wishlist",
+          payload: response.data.wishlist.length,
+        });
+        setwishlistName("Add To Wishlist")
+      }
+    }
+  };
+
+  const wishlistApiUrl = "/api/user/wishlist";
+  useEffect(() => {
     getData(wishlistApiUrl, setwishData);
-        console.log(wishData);
-  },[])
+  }, []);
 
   // for cart
-  const addtocartHandler = async()=>{
-    // const [inCart , setinCart]= useState("")
-    // const buttonName = inCart ? "Remove From Cart": "Add to cart";
-    // const addinCart = ()=>{
-    //   setinCart(!inCart)
-    // }
+  const addtocartHandler = async () => {
     const requestBody = {
       product: item,
     };
@@ -57,19 +74,80 @@ export const WatchCard = (props) => {
         authorization: encodedToken,
       },
     };
-    const response = await postcall(cartApiUrl,requestBody)
-    if (response.status===201 || 200) {
-      const response = await axios.get(cartApiUrl, requestHeaders);
-        dispatch({type: "get_cartitem",payload : response.data.cart.length})
+    if (cartName === "Add To Cart") {
+      const response = await postcall(cartApiUrl, requestBody);
+      if (response.status === 201 || 200) {
+        const response = await axios.get(cartApiUrl, requestHeaders);
+        dispatch({ type: "get_cartitem", payload: response.data.cart.length });
+        setcartName("Remove from Cart");
       }
-  }
-  const cartApiUrl = "/api/user/cart"
-  useEffect(()=>{
-    getData(cartApiUrl, setcartData);
-        console.log(cartData);
-  },[])
+    }
 
- 
+    if (cartName === "Remove from Cart") {
+      const cartlistdeleteApiUrl = `/api/user/cart/${_id}`;
+      const encodedToken = localStorage.getItem("encodedToken");
+      const requestHeaders = {
+        headers: {
+          authorization: encodedToken,
+        },
+      };
+      const response = await axios.delete(cartlistdeleteApiUrl, requestHeaders);
+
+      if (response.status === 201 || 200) {
+        dispatch({
+          type: "get_cartitem",
+          payload: response.data.cart.length,
+        });
+        setcartName("Add To Cart");
+      }
+    }
+  };
+  const cartApiUrl = "/api/user/cart";
+  useEffect(() => {
+    getData(cartApiUrl, setcartData);
+  }, []);
+
+  // for wishlistdelte method
+
+  const wishlistdeleteHandler = async () => {
+    const wishlistdeleteApiUrl = `/api/user/wishlist/${_id}`;
+    const encodedToken = localStorage.getItem("encodedToken");
+    const requestHeaders = {
+      headers: {
+        authorization: encodedToken,
+      },
+    };
+    const response = await axios.delete(wishlistdeleteApiUrl, requestHeaders);
+
+    if (response.status === 201 || 200) {
+      dispatch({
+        type: "get_wishlist",
+        payload: response.data.wishlist.length,
+      });
+    }
+  };
+
+  const cartlistdeleteHandler = async () => {
+    const cartlistdeleteApiUrl = `/api/user/cart/${_id}`;
+    const encodedToken = localStorage.getItem("encodedToken");
+    const requestHeaders = {
+      headers: {
+        authorization: encodedToken,
+      },
+    };
+    const response = await axios.delete(cartlistdeleteApiUrl, requestHeaders);
+
+    if (response.status === 201 || 200) {
+      dispatch({
+        type: "get_cartitem",
+        payload: response.data.cart.length,
+      });
+    }
+  };
+
+  const [cartName, setcartName] = useState("Add To Cart");
+
+  const [wishlistName, setwishlistName] = useState("Add To Wishlist");
 
   return (
     <div className="main-container-card">
@@ -85,14 +163,19 @@ export const WatchCard = (props) => {
 
       <div className="btn-wrapper">
         <div>
-          <button onClick={addtocartHandler}type="btn" className="cart-btn">
-            Add to Cart
+          <button onClick={addtocartHandler} type="btn" className="cart-btn">
+            {cartName}
           </button>
         </div>
         <div>
-          <button onClick={addtoWishlistHandler} type="btn" className="wishlist-btn">
-            Add to Wishlist
+          <button
+            onClick={addtoWishlistHandler}
+            type="btn"
+            className="wishlist-btn"
+          >
+            {wishlistName}
           </button>
+          {/* <button onClick={cartlistdeleteHandler}>Delete from wishlist</button> */}
         </div>
       </div>
     </div>

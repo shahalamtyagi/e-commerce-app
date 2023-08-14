@@ -31,7 +31,10 @@
         padding-left: 1rem;
      }
      .navbar-input{
-        padding: 2px 3rem;
+        padding: 2px ;
+        /* width: 10rem;
+        height: 1rem;
+        padding: .5rem; */
         border-radius: 7px;
         border: 2px solid black;
      }

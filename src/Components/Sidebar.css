@@ -20,3 +20,6 @@
 .clear-link :hover{
   font-size: larger;
 }
+.filter-link{
+  text-decoration: none;
+}

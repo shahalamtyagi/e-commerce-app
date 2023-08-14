@@ -12,10 +12,11 @@
   display: flex;
   flex-wrap: wrap;
   margin: 1rem;
-  gap: 3rem;
-  padding-left: 2rem;
+  gap: 1rem;
+  padding-left: 1rem;
 }
 .sidebar-and-card-wrapper {
   display: flex;
   height: 100%;
+  /* width: 80%; */
 }

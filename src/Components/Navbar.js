@@ -1,9 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import "./Navbar.css";
 import { BagIcon, WishIcon } from "./Wishicon";
+import { AppContext } from "../Context";
 export const Navbar = () => {
+  const Context = useContext(AppContext);
+  const { dispatch } = Context;
+
+  const inputHandler = (e) => {
+    dispatch({ type: "input_value", payload: e.target.value });
+  };
+
   const [productapi, setproductapi] = useState([]);
   const api = "/api/categories";
   useEffect(() => {
@@ -13,6 +21,7 @@ export const Navbar = () => {
         setproductapi(data.categories);
       });
   }, []);
+
   return (
     <div className="navbar-wrapper">
       <div>
@@ -39,10 +48,14 @@ export const Navbar = () => {
 
       <div className="input-wrapper">
         <input
+          onChange={(e) => inputHandler(e)}
           type="search"
           className="navbar-input"
-          placeholder="Search for product, brand..."
+          placeholder="Search for product"
         />
+        {/* {filteredData?.map((item) => {
+
+    })} */}
       </div>
 
       <div className="link-wrapper">

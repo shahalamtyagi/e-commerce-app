@@ -1,3 +1,4 @@
+
 .cardcontainer {
   display: flex;
   flex-direction: column;
@@ -64,7 +65,7 @@
 
 .main-container-card {
   height: 23rem;
-  width: 13rem;
+  width: 15rem;
   background-color: whitesmoke;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 5px;
@@ -91,13 +92,15 @@ color:green
  align-items: center;
 }
 .cart-btn{
-  padding: 2px 4rem;
+  width: 40vh;
+  /* padding: 2px 4rem; */
   background-color: var(--primary-color);
   border-radius: 4px;
   cursor: pointer;
 }
 .wishlist-btn{
-  padding: 2px 3.4rem;
+  width: 40vh;
+  /* padding: 2px 3.4rem; */
   background-color: var(--primary-color);
   border-radius: 4px;
   cursor: pointer;
@@ -105,6 +108,7 @@ color:green
 p{
   margin: .75rem;
 }
+
 
 
 
@@ -152,11 +156,21 @@ img {
   width: 100%;
   align-items: center;
 }
+/* p{
+  margin: -3px;
+  padding: -3px;
+} */
 @media (max-width: 800px) {
   .card img {
     height: 10rem;
   }
   .card{
     width: 22rem;
+  }
+  .cart-btn{
+    width: 28vh;
+  }
+  .wishlist-btn{
+    width: 28vh;
   }
 }

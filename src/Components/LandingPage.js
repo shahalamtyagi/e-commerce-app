@@ -1,5 +1,5 @@
 import "./LandingPage.css"
-import { ImgCard, WatchCard } from "./Card";
+import { AirpodCard, ImgCard, WatchCard } from "./Card";
 import { LandingPageImage } from "./Image";
 import { Layout } from "./Layout";
 

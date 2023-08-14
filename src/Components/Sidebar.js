@@ -12,7 +12,7 @@ export const Sidebar = () => {
   return (
     <div className="e-shop-sidebar-wrapper">
       <div className="sidebar-top-headding">
-        <h3>Filter</h3>
+        <h3 className="filter-headding"><Link to="" className="filter-link">Filter</Link></h3>
         <h3 className="clear-heading"><Link to= "" className="clear-link">Clear </Link> </h3>
       </div>
       <div>
@@ -66,12 +66,12 @@ export const Sidebar = () => {
       </div>
       <div className="sortprice-input-wrapper">
         <div>
-          <input type="radio" id="low-to-high" value="Low to high" name="price"/>
+          <input type="radio" id="low-to-high" value="Low to high" name="price" />
           <label for="low-to-high">Low to high</label>
         </div>
         <div>
           <input type="radio" id="high-to-low" value="High to Low" name="price"/>
-          <label for="high-to-low">Low to high</label>
+          <label for="high-to-low">high to Low  </label>
         </div>
       </div>
     </div>
