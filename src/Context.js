@@ -6,7 +6,9 @@ const initialState = {
   wishlistitemcount: 0,
   countcartitem: 0,
   inputvalue: "",
-// lowPriceValue: ""
+  selectedcategory : [],
+sortQuery: "",
+rattingValue : null,
 };
 const reducer = (state, action) => {
   switch (action.type) {
@@ -30,11 +32,22 @@ const reducer = (state, action) => {
         ...state,
         inputvalue: action.payload,
       };
-      // case "Get_low_value":
-      //   return {
-      //     ...state,
-      //     lowPriceValue: action.payload,
-      //   };
+      case "selectedcategory":
+        return {
+          ...state,
+          selectedcategory: action.payload,
+        };
+      case "sortQuery":
+        return {
+          ...state,
+          sortQuery: action.payload,
+        };
+
+        case "rattingValue":
+          return {
+            ...state,
+            rattingValue: action.payload,
+          };
     default:
       return state;
   }
