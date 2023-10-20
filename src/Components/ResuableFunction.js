@@ -1,8 +1,8 @@
 import axios from "axios";
-export const getData = (productApi, setProductApi) => {
-  fetch(productApi)
+export const getData = (apiUrl, setApiUrl) => {
+  fetch(apiUrl)
     .then((response) => response.json())
-    .then((data) => setProductApi(data));
+    .then((data) => setApiUrl(data));
 };
 
 export async function postcall(apiUrl, requestBody) {

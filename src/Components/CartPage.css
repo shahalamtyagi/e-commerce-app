@@ -1,39 +1,72 @@
-.cartpage{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 90vh;
-    background-size: cover;
-    background-color: aliceblue;
-    align-items: center;
-    justify-content: center;
-  }
-  .cart-page-wrapper{
-    display: flex;
+
+
+.card-img-container {
+  display: flex;
+  background-color: blueviolet;
+}
+
+/* //dklll */
+
+.e-card-container {
+  /* gap: 1rem; */
+  display: flex;
+  box-sizing: border-box;
+  padding-bottom: 1rem;
+  /* padding: 1rem; */
+  /* height: 100%; */
+  width: 100%;
+}
+.e-image-card-wrapper {
+  box-sizing: border-box;
+  height: 50%;
+ 
+}
+.e-card-image {
+  width: 40vh;
+  height: 15.4rem;
+  background-color: aquamarine;
+}
+.e-card-headding {
+  background-color: var(--tertiary-color);
+  border-radius: 5px;
+  display: flex;
   flex-direction: column;
-  background-position: center;
-  border-radius: .5rem;
-  height: 300px;
-  width: 250px;
-  background-color:gainsboro;
-  color: var(--secoundary-color);
   align-items: center;
-  padding: 1rem;
-  gap: 1rem;
-  }
-  .blank-div{
-    width: 100%;
-    height: 2px;
-    background-color: var(--secoundary-color);
-  }
-  .item-price{
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-    font-weight: bold;
-  }
-  .proceed-btn{
-    padding: 4px 2rem;
-    border-radius: 1rem;
-    background-color: aliceblue;
-  }
+  height: 100%;
+  width: 15rem;
+}
+
+.Cancle-Btn {
+  background-color: var(--tertiary-color);
+  color: black;
+  /* padding: 8rem; */
+  text-align: center;
+  border-radius: 4px;
+  padding-bottom: 2px;
+  border: solid black 1px;
+}
+.e-card-btn {
+  display: flex;
+  flex-direction: column;
+  gap:5px;
+  margin-bottom: 8px;
+}
+.quantity-btn {
+  display: flex;
+  flex-direction: row;
+  padding-top: 1rem;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+}
+.quantity-minus-btn {
+  height: 1.5rem;
+}
+.quantity-plus-btn {
+  height: 1.5rem;
+}
+
+.e-main-card-container{
+  display: flex;
+  padding: 2rem;
+  flex-direction: row-reverse;
+}

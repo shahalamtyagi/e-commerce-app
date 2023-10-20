@@ -14,7 +14,7 @@ export const WatchCard = (props) => {
   const { item } = props;
   const { price, title, author, src, _id } = item;
 
-  const addtoWishlistHandler = async () => {
+  const addtoWishlistHandler = async () => {  
     const requestBody = {
       product: item,
     };

@@ -12,7 +12,7 @@ export const Sidebar = () => {
   const [CategoryData, setcategoryData] = useState({});
 
   const onchangeHandler = (e, categoryobj) => {
-    console.log(e, categoryobj);
+    // console.log(e, categoryobj);
     if (e.target.checked) {
       dispatch({
         type: "selectedcategory",
@@ -32,6 +32,8 @@ export const Sidebar = () => {
   const rattingHandler = (e) => {
     dispatch({ type: "rattingValue", payload: e.target.value });
   };
+
+  
 
   const categoryApiurl = "/api/categories";
   useEffect(() => {

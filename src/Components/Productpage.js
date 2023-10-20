@@ -12,49 +12,50 @@ export const ProductPage = () => {
 
   const [productData, setProductData] = useState({});
 
-  const ProdctFilterData = productData.products?.filter((item) =>
+  const prodctFilterData = state.inputvalue? productData?.products?.filter((item) =>
     item.title.toLowerCase().includes(state.inputvalue.trim().toLowerCase())
-  );
-  const CategoryFilterdProducts = ProdctFilterData?.filter((item) =>
+  ): productData?.products;
+
+  const categoryFilterdProducts = state.selectedcategory?.length > 0 ? prodctFilterData?.filter((item) =>
     state.selectedcategory?.includes(item.categoryName)
-  );
+  ): prodctFilterData;
 
-  const ProductList =
-    state.selectedcategory?.length === 0
-      ? ProdctFilterData
-      : CategoryFilterdProducts;
 
-const sortProductByPriceHandler = ()=>{
-  let list = [];
-  if(state.sortQuery === "Low to high"){
-    list = ProductList.sort((a , b )=> a.price - b.price);
-  }
-  if(state.sortQuery === "High to Low") {
-    list = ProductList.sort((a , b)=> b.price - a.price);
-  }
-  return list;
-}
+  
+  const sortProductByPriceHandler = () => {
+    let list = [];
+    if (state.sortQuery === "Low to high") {
+      list = categoryFilterdProducts?.sort((a, b) => a.price - b.price);
+    }
+    if (state.sortQuery === "High to Low") {
+      list = categoryFilterdProducts?.sort((a, b) => b.price - a.price);
+    }
+    return list;
+  };
 
-const productListSortedByPrice = state.sortQuery ? sortProductByPriceHandler() : ProductList
-// \\for ratting
+  const productListSortedByPrice = state.sortQuery
+    ? sortProductByPriceHandler()
+    : categoryFilterdProducts;
 
-const ProductListSortedByRatting  = productListSortedByPrice?.filter((item)=> {
-  return item.ratting >= state.rattingValue;
-})
 
+  const productListSortedByRatting = state.rattingValue ?  productListSortedByPrice?.filter(
+    (item) => {
+      return item.ratting >= state.rattingValue;
+    } 
+  ) : prodctFilterData
 
 
   const productsApiurl = "/api/products";
-  useEffect(() => {
+  useEffect(() => {    
     getData(productsApiurl, setProductData);
   }, []);
   // console.log(productData);
-  return (
+  return ( 
     <Layout>
       <div className="sidebar-and-card-wrapper">
         <Sidebar />
         <div className="product-item">
-          {ProductListSortedByRatting?.map((item) => {
+          {productListSortedByRatting?.map((item) => {
             return <WatchCard key={item.id} item={item} />;
           })}
         </div>

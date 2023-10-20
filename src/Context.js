@@ -6,9 +6,12 @@ const initialState = {
   wishlistitemcount: 0,
   countcartitem: 0,
   inputvalue: "",
-  selectedcategory : [],
-sortQuery: "",
-rattingValue : null,
+  selectedcategory: [],
+  sortQuery: "",
+  rattingValue: null,
+  cartProductItem: "",
+  deleteCartValue: [],
+  
 };
 const reducer = (state, action) => {
   switch (action.type) {
@@ -32,25 +35,38 @@ const reducer = (state, action) => {
         ...state,
         inputvalue: action.payload,
       };
-      case "selectedcategory":
-        return {
-          ...state,
-          selectedcategory: action.payload,
-        };
-      case "sortQuery":
-        return {
-          ...state,
-          sortQuery: action.payload,
-        };
+    case "selectedcategory":
+      return {
+        ...state,
+        selectedcategory: action.payload,
+      };
 
-        case "rattingValue":
-          return {
-            ...state,
-            rattingValue: action.payload,
-          };
+    case "sortQuery":
+      return {
+        ...state,
+        sortQuery: action.payload,
+      };
+
+    case "rattingValue":
+      return {
+        ...state,
+        rattingValue: action.payload,
+      };
+
+    case "cartProductItem":
+      return {
+        ...state,
+        cartProductItem: action.payload,
+      };
+      case "delete-Cart-Value":
+        return {
+          ...state,
+          deleteCartValue: action.payload,
+        };
     default:
       return state;
   }
+  
 };
 
 export const Provider = ({ children }) => {

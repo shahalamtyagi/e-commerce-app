@@ -1,27 +1,75 @@
-import { Layout } from "./Layout"
-import "./CartPage.css"
-export const CartPage = ()=>{
-    return(
-        <Layout>
-            <div className="cartpage">
-            <h1>MY CART ( 0 )</h1>
-                <div className="cart-page-wrapper">
-                    <h3><b>PRICE-DETAILS</b></h3>
-                    <div className="blank-div"></div>
-                    <div className="item-price">
-                        <p className="total-price">TOTAL-AMOUNT</p>
-                        <p>(0)</p>
-                    </div>
-                        <div className="blank-div"></div>
-<p>You will save 55% on this order</p>
-<a href="/">
-<button className="proceed-btn">PROCEED TO SHIPPING</button>
+import { Layout } from "./Layout";
 
-</a>
-                </div>
+import "./CartPage.css";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import { getData } from "./ResuableFunction";
+import { AppContext } from "../Context";
+import { CartProductCard } from "./CartProductCard";
+import { BillCard } from "./BillCard";
 
+export const CartPage = () => {
+  const Context = useContext(AppContext);
+  const { dispatch, state } = Context;
+  const [cartItem, setCartItem] = useState([]);
 
-            </div>
-        </Layout>
-    )
-}
+  const cartApiUrl = "/api/user/cart";
+
+  const encodedToken = localStorage.getItem("encodedToken");
+
+  const requestHeaders = {
+    headers: {
+      authorization: encodedToken,
+    },
+  };
+
+  useEffect(() => {
+    async function getCartData() {
+      const response = await axios.get(cartApiUrl, requestHeaders);
+      const cartProduct = response.data.cart;
+      
+      setCartItem(cartProduct);
+      // console.log(cartItem);
+    }
+
+    getCartData();
+  }, []);
+
+  const cartDeleteHandler = async (_id) => {
+    const cartDeleteApiUrl = `/api/user/cart/${_id}`;
+    const encodedToken = localStorage.getItem("encodedToken");
+    const requestHeaders = {
+      headers: {
+        authorization: encodedToken,
+      },
+    };
+    const response = await axios.delete(cartDeleteApiUrl, requestHeaders);
+    console.log(response);
+
+dispatch({
+  type: "delete-Cart-Value" , payload: cartDeleteHandler
+})
+    
+  };
+
+  
+
+  return (
+    <Layout>
+      <div className="e-main-card-container">
+        <BillCard />
+
+        <div>
+          {cartItem?.map((item) => {
+            return (
+              <CartProductCard
+                item={item}
+                cartDeleteHandler={()=>cartDeleteHandler(item._id)}
+              />
+            );
+          })}
+        </div>
+      </div>
+    </Layout>
+  );
+};
