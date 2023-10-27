@@ -57,13 +57,14 @@ dispatch({
   return (
     <Layout>
       <div className="e-main-card-container">
-        <BillCard />
+        <BillCard  cartData= {cartItem}/>
 
         <div>
           {cartItem?.map((item) => {
             return (
               <CartProductCard
                 item={item}
+              setCartItem ={setCartItem}
                 cartDeleteHandler={()=>cartDeleteHandler(item._id)}
               />
             );

@@ -27,7 +27,7 @@
   background-color: aquamarine;
 }
 .e-card-headding {
-  background-color: var(--tertiary-color);
+  background-color: var(--primary-color);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -59,10 +59,12 @@
   padding-bottom: 1rem;
 }
 .quantity-minus-btn {
-  height: 1.5rem;
+  height: 1.3rem;
+  border-radius: 80%;
 }
 .quantity-plus-btn {
-  height: 1.5rem;
+  height: 1.3rem;
+  border-radius: 100%;
 }
 
 .e-main-card-container{

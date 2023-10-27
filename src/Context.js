@@ -11,7 +11,8 @@ const initialState = {
   rattingValue: null,
   cartProductItem: "",
   deleteCartValue: [],
-  
+  cartTotalPrice: [],
+  setCartItem:[],
 };
 const reducer = (state, action) => {
   switch (action.type) {
@@ -63,6 +64,12 @@ const reducer = (state, action) => {
           ...state,
           deleteCartValue: action.payload,
         };
+        case "set-Cart-Item":
+          return {
+            ...state, 
+            setCartItem: action.payload
+          }
+      
     default:
       return state;
   }

@@ -1,6 +1,7 @@
 
   :root {
     --primary-color: gainsboro;
+    /* --primary-color: blue; */
     --secoundary-color: black;
     --tertiary-color: whitesmoke;
 }

@@ -7,14 +7,23 @@ import { AppContext } from "../Context";
 
 export const WatchCard = (props) => {
   const context = useContext(AppContext);
-  const { dispatch } = context;
+  const { dispatch, state } = context;
   const [wishData, setwishData] = useState([]);
   const [cartData, setcartData] = useState([]);
+
+  const [cartName, setcartName] = useState("Add To Cart");
+
+  const [wishlistName, setwishlistName] = useState("Add To Wishlist");
 
   const { item } = props;
   const { price, title, author, src, _id } = item;
 
-  const addtoWishlistHandler = async () => {  
+  const inCart = state.setCartItem?.some((pro) => pro._id === item._id);
+  console.log(inCart);
+
+
+
+  const addtoWishlistHandler = async () => {
     const requestBody = {
       product: item,
     };
@@ -51,7 +60,7 @@ export const WatchCard = (props) => {
           type: "get_wishlist",
           payload: response.data.wishlist.length,
         });
-        setwishlistName("Add To Wishlist")
+        setwishlistName("Add To Wishlist");
       }
     }
   };
@@ -62,47 +71,79 @@ export const WatchCard = (props) => {
   }, []);
 
   // for cart
-  const addtocartHandler = async () => {
-    const requestBody = {
-      product: item,
-    };
 
-    const encodedToken = localStorage.getItem("encodedToken");
-
-    const requestHeaders = {
-      headers: {
-        authorization: encodedToken,
-      },
-    };
-    if (cartName === "Add To Cart") {
-      const response = await postcall(cartApiUrl, requestBody);
-      if (response.status === 201 || 200) {
-        const response = await axios.get(cartApiUrl, requestHeaders);
-        dispatch({ type: "get_cartitem", payload: response.data.cart.length });
-        setcartName("Remove from Cart");
-      }
-    }
-
-    if (cartName === "Remove from Cart") {
-      const cartlistdeleteApiUrl = `/api/user/cart/${_id}`;
-      const encodedToken = localStorage.getItem("encodedToken");
-      const requestHeaders = {
-        headers: {
-          authorization: encodedToken,
-        },
-      };
-      const response = await axios.delete(cartlistdeleteApiUrl, requestHeaders);
-
-      if (response.status === 201 || 200) {
-        dispatch({
-          type: "get_cartitem",
-          payload: response.data.cart.length,
-        });
-        setcartName("Add To Cart");
-      }
-    }
-  };
   const cartApiUrl = "/api/user/cart";
+  const requestBody = {
+    product: item,
+  };
+
+  const encodedToken = localStorage.getItem("encodedToken");
+
+  const requestHeaders = {
+    headers: {
+      authorization: encodedToken,
+    },
+  };
+
+  const addtocartHandler = async () => {
+    const res = await axios.post(cartApiUrl, requestBody , requestHeaders);
+    if (res.status === 201 || 200) {
+      const response = await axios.get(cartApiUrl, requestHeaders);
+      dispatch({ type: "set-Cart-Item", payload: response.data.cart });
+    }
+    // const requestBody = {
+    //   product: item,
+    // };
+
+    // const encodedToken = localStorage.getItem("encodedToken");
+
+    // const requestHeaders = {
+    //   headers: {
+    //     authorization: encodedToken,
+    //   },
+    // };
+    // if (cartName === "Add To Cart") {
+    //   const response = await postcall(cartApiUrl, requestBody);
+    //   if (response.status === 201 || 200) {
+    //     const response = await axios.get(cartApiUrl, requestHeaders);
+    //     dispatch({ type: "get_cartitem", payload: response.data.cart.length });
+    //     setcartName("Remove from Cart");
+    //   }
+    // }
+
+    // if (cartName === "Remove from Cart") {
+    //   const cartlistdeleteApiUrl = `/api/user/cart/${_id}`;
+    //   const encodedToken = localStorage.getItem("encodedToken");
+    //   const requestHeaders = {
+    //     headers: {
+    //       authorization: encodedToken,
+    //     },
+    //   };
+    //   const response = await axios.delete(cartlistdeleteApiUrl, requestHeaders);
+
+    //   if (response.status === 201 || 200) {
+    //     dispatch({
+    //       type: "get_cartitem",
+    //       payload: response.data.cart.length,
+    //     });
+    //     setcartName("Add To Cart");
+    //   }
+    // }
+  };
+
+  async function removeFromCartHandler() {
+    const cartlistdeleteApiUrl = `/api/user/cart/${_id}`;
+    const res = await axios.delete(cartlistdeleteApiUrl, requestHeaders);
+
+    if (res.status === 201 || 200) {
+      const response = await axios.get(cartApiUrl, requestHeaders);
+      
+      dispatch({
+        type: "set-Cart-Item",
+        payload: response.data.cart,
+      });
+    }
+  }
   useEffect(() => {
     getData(cartApiUrl, setcartData);
   }, []);
@@ -139,15 +180,11 @@ export const WatchCard = (props) => {
 
     if (response.status === 201 || 200) {
       dispatch({
-        type: "get_cartitem",
+        type: "set-Cart-Item",
         payload: response.data.cart.length,
       });
     }
   };
-
-  const [cartName, setcartName] = useState("Add To Cart");
-
-  const [wishlistName, setwishlistName] = useState("Add To Wishlist");
 
   return (
     <div className="main-container-card">
@@ -163,9 +200,19 @@ export const WatchCard = (props) => {
 
       <div className="btn-wrapper">
         <div>
-          <button onClick={addtocartHandler} type="btn" className="cart-btn">
-            {cartName}
-          </button>
+          {inCart ? (
+            <button
+              onClick={removeFromCartHandler}
+              type="btn"
+              className="cart-btn"
+            >
+              Remove From Cart
+            </button>
+          ) : (
+            <button onClick={addtocartHandler} type="btn" className="cart-btn">
+              Add To Cart
+            </button>
+          )}
         </div>
         <div>
           <button

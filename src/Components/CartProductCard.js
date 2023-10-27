@@ -1,9 +1,13 @@
 import axios from "axios";
+import { useContext } from "react";
+import { AppContext } from "../Context";
 
 export const CartProductCard = (props) => {
-  const { item, cartDeleteHandler} = props;
+  const Context = useContext(AppContext);
+  const { dispatch, state } = Context;
+  const { item, cartDeleteHandler,setCartItem } = props;
 
-  async function cartItemIncreaseHandler  (_id , type) {
+  async function cartItemIncreaseHandler(_id, type) {
     const postApiUrl = `/api/user/cart/${_id}`;
     const encodedToken = localStorage.getItem("encodedToken");
 
@@ -18,9 +22,10 @@ export const CartProductCard = (props) => {
         type: type,
       },
     };
-    const response = await axios.post(postApiUrl, requestBody ,requestHeaders )
-    console.log(response);
-  };
+
+    const response = await axios.post(postApiUrl, requestBody, requestHeaders);
+    setCartItem(response.data.cart)
+  }
   return (
     <div className="e-card-container">
       <div className="e-image-card-wrapper">
@@ -37,13 +42,20 @@ export const CartProductCard = (props) => {
             <b>Quantity :</b>
 
             <button
+            disabled= {item.qty===1}
+              className="quantity-minus-btn"
+              onClick={() => cartItemIncreaseHandler(item._id, "decrement")}
+            >
+              -
+            </button>
+            <spam>{item.qty}</spam>
+
+            <button
               className="quantity-plus-btn"
-              onClick={() => cartItemIncreaseHandler(item._id , "increment")}
+              onClick={() => cartItemIncreaseHandler(item._id, "increment")}
             >
               +
             </button>
-            <spam>{item.qty}</spam>
-            <button className="quantity-minus-btn"  onClick={() => cartItemIncreaseHandler(item._id , "decrement")}>-</button>
           </div>
         </div>
 
