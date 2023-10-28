@@ -5,7 +5,7 @@ import { AppContext } from "../Context";
 export const CartProductCard = (props) => {
   const Context = useContext(AppContext);
   const { dispatch, state } = Context;
-  const { item, cartDeleteHandler,setCartItem } = props;
+  const { item, cartDeleteHandler,cartArray } = props;
 
   async function cartItemIncreaseHandler(_id, type) {
     const postApiUrl = `/api/user/cart/${_id}`;
@@ -24,7 +24,7 @@ export const CartProductCard = (props) => {
     };
 
     const response = await axios.post(postApiUrl, requestBody, requestHeaders);
-    setCartItem(response.data.cart)
+    cartArray(response.data.cart)
   }
   return (
     <div className="e-card-container">

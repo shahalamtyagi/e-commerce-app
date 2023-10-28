@@ -12,7 +12,8 @@ const initialState = {
   cartProductItem: "",
   deleteCartValue: [],
   cartTotalPrice: [],
-  setCartItem:[],
+  cartArray:[],
+  wishListArray:[],
 };
 const reducer = (state, action) => {
   switch (action.type) {
@@ -64,11 +65,16 @@ const reducer = (state, action) => {
           ...state,
           deleteCartValue: action.payload,
         };
-        case "set-Cart-Item":
+        case "cartItem":
           return {
             ...state, 
-            setCartItem: action.payload
-          }
+            cartArray: action.payload
+          };
+          case "wish-Item":
+            return {
+              ...state, 
+              wishListArray: action.payload
+            }
       
     default:
       return state;

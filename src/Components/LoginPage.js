@@ -15,10 +15,8 @@ export const Login = () => {
       password: password,
     };
     const loginApiUrl = "/api/auth/login";
-    console.log("loginHandler");
     try {
       const response = await postcall(loginApiUrl, requestBody);
-      console.log(response);
       if (response.status === 200) {
         navigate("/LandingPage");
         localStorage.setItem("encodedToken" ,response.data.encodedToken);
@@ -37,7 +35,6 @@ export const Login = () => {
     const loginApiUrl = "/api/auth/login";
     try {
       const response = await postcall(loginApiUrl, requestBody);
-      console.log(response);
       if (response.status === 200) {
         navigate("/ProductPage");
         localStorage.setItem("encodedToken" ,response.data.encodedToken);

@@ -11,7 +11,7 @@ import { BillCard } from "./BillCard";
 export const CartPage = () => {
   const Context = useContext(AppContext);
   const { dispatch, state } = Context;
-  const [cartItem, setCartItem] = useState([]);
+  const [cartItem, cartArray] = useState([]);
 
   const cartApiUrl = "/api/user/cart";
 
@@ -28,8 +28,7 @@ export const CartPage = () => {
       const response = await axios.get(cartApiUrl, requestHeaders);
       const cartProduct = response.data.cart;
       
-      setCartItem(cartProduct);
-      // console.log(cartItem);
+      cartArray(cartProduct);
     }
 
     getCartData();
@@ -44,7 +43,6 @@ export const CartPage = () => {
       },
     };
     const response = await axios.delete(cartDeleteApiUrl, requestHeaders);
-    console.log(response);
 
 dispatch({
   type: "delete-Cart-Value" , payload: cartDeleteHandler
@@ -64,7 +62,7 @@ dispatch({
             return (
               <CartProductCard
                 item={item}
-              setCartItem ={setCartItem}
+              cartArray ={cartArray}
                 cartDeleteHandler={()=>cartDeleteHandler(item._id)}
               />
             );

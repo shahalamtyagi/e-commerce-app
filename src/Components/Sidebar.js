@@ -12,7 +12,6 @@ export const Sidebar = () => {
   const [CategoryData, setcategoryData] = useState({});
 
   const onchangeHandler = (e, categoryobj) => {
-    // console.log(e, categoryobj);
     if (e.target.checked) {
       dispatch({
         type: "selectedcategory",

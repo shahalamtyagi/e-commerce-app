@@ -49,7 +49,6 @@ export const ProductPage = () => {
   useEffect(() => {    
     getData(productsApiurl, setProductData);
   }, []);
-  // console.log(productData);
   return ( 
     <Layout>
       <div className="sidebar-and-card-wrapper">

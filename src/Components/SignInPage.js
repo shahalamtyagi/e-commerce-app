@@ -20,7 +20,6 @@ export const SignupPage = () => {
     const signupApiUrl = "/api/auth/signup";
     try {
       const response = await postcall(signupApiUrl, requestBody);
-      console.log(response);
       if (response.status === 200) {
         navigate("/ProductPage");
         localStorage.setItem("encodedToken", response.data.encodedToken);
