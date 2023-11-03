@@ -16,14 +16,17 @@ export const WatchCard = (props) => {
 
   const inCart = state.cartArray?.some((pro) => pro._id === item._id);
   const inWishList = state.wishListArray?.some((pro) => pro._id === item._id);
-  console.log(state.inWishList);
+  // console.log(state.wishListArray);
+
+  // for wishlist
 
   const wishlistApiUrl = "/api/user/wishlist";
+  
 
   const addtoWishlistHandler = async () => {
     const res = await axios.post(wishlistApiUrl, requestBody, requestHeaders);
     if (res.status === 201 || 200) {
-      const response = await axios.get(cartApiUrl, requestHeaders);
+      const response = await axios.get(wishlistApiUrl, requestHeaders);
       dispatch({ type: "wish-Item", payload: response.data.wishlist });
     }
   };
@@ -81,9 +84,9 @@ export const WatchCard = (props) => {
       });
     }
   }
-  useEffect(() => {
-    getData(cartApiUrl, setcartData);
-  }, []);
+  // useEffect(() => {
+  //   getData(cartApiUrl, setcartData);
+  // }, []);
 
 
   return (

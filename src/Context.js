@@ -14,6 +14,8 @@ const initialState = {
   cartTotalPrice: [],
   cartArray:[],
   wishListArray:[],
+  selectedWishList : [],
+  cartListCart:[],
 };
 const reducer = (state, action) => {
   switch (action.type) {
@@ -74,7 +76,17 @@ const reducer = (state, action) => {
             return {
               ...state, 
               wishListArray: action.payload
-            }
+            };
+            case "selected-Wish-List":
+              return {
+                ...state, 
+                selectedWishList: action.payload
+              }
+              case "cart-List-Cart":
+                return {
+                  ...state, 
+                  cartListCart: action.payload
+                }
       
     default:
       return state;

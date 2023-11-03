@@ -5,7 +5,30 @@ import { AppContext } from "../Context";
 export const CartProductCard = (props) => {
   const Context = useContext(AppContext);
   const { dispatch, state } = Context;
-  const { item, cartDeleteHandler,cartArray } = props;
+  const { item, cartDeleteHandler,cartArray} = props;
+
+
+  const wishlistApiUrl = "/api/user/wishlist";
+
+  const requestBody = {
+    product: item,
+  };
+
+  const encodedToken = localStorage.getItem("encodedToken");
+
+  const requestHeaders = {
+    headers: {
+      authorization: encodedToken,
+    },
+  };
+  
+
+  const movetoWishlistHandler = async () => {
+    const res = await axios.post(wishlistApiUrl, requestBody, requestHeaders);
+      dispatch({ type: "wish-Item", payload: res.data.wishlist });
+    cartDeleteHandler()
+  };
+
 
   async function cartItemIncreaseHandler(_id, type) {
     const postApiUrl = `/api/user/cart/${_id}`;
@@ -60,11 +83,13 @@ export const CartProductCard = (props) => {
         </div>
 
         <div className="e-card-btn">
-          <button className="Cancle-Btn" onClick={cartDeleteHandler}>
+          <button className="Cancle-Btn" onClick={()=>cartDeleteHandler(item._id)}>
             Remove from cart
           </button>
 
-          <button className="Cancle-Btn">Add to wishlist</button>
+          <button className="Cancle-Btn" onClick={movetoWishlistHandler}>Move to wishlist</button>
+          {/* <button className="Cancle-Btn" onClick={movetoWishlistHandler}>Move to wishlist</button> */}
+
         </div>
       </div>
     </div>

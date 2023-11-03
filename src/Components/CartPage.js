@@ -7,11 +7,12 @@ import { getData } from "./ResuableFunction";
 import { AppContext } from "../Context";
 import { CartProductCard } from "./CartProductCard";
 import { BillCard } from "./BillCard";
+import { CardAddress } from "./CardAddress";
 
 export const CartPage = () => {
   const Context = useContext(AppContext);
   const { dispatch, state } = Context;
-  const [cartItem, cartArray] = useState([]);
+  const [cartItem, setCartItem] = useState([]);
 
   const cartApiUrl = "/api/user/cart";
 
@@ -28,7 +29,10 @@ export const CartPage = () => {
       const response = await axios.get(cartApiUrl, requestHeaders);
       const cartProduct = response.data.cart;
       
-      cartArray(cartProduct);
+      setCartItem(cartProduct);
+      dispatch({
+        type : "cartItem", payload:  cartProduct
+      })
     }
 
     getCartData();
@@ -43,9 +47,10 @@ export const CartPage = () => {
       },
     };
     const response = await axios.delete(cartDeleteApiUrl, requestHeaders);
+    setCartItem(response.data.cart)
 
 dispatch({
-  type: "delete-Cart-Value" , payload: cartDeleteHandler
+  type: "cartItem" , payload: response.data.cart
 })
     
   };
@@ -56,13 +61,14 @@ dispatch({
     <Layout>
       <div className="e-main-card-container">
         <BillCard  cartData= {cartItem}/>
+        <CardAddress/>
 
         <div>
           {cartItem?.map((item) => {
             return (
               <CartProductCard
                 item={item}
-              cartArray ={cartArray}
+              cartArray ={setCartItem}
                 cartDeleteHandler={()=>cartDeleteHandler(item._id)}
               />
             );
