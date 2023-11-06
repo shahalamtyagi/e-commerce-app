@@ -6,6 +6,7 @@ import { Login } from "./Components/LoginPage";
 import { SignupPage } from "./Components/SignInPage";
 import { CartPage } from "./Components/CartPage";
 import { WishlistPage } from "./Components/WishlistPage";
+import { CardAddress } from "./Components/CardAddress";
 
 // import { Layout } from "./Components/Layout";
 
@@ -22,6 +23,7 @@ function App() {
     <Route path="wishlistpage" Component={WishlistPage}/>
     <Route path="signinpage" Component={Login}/>
     <Route path="snpage" Component={Login}/>
+    <Route path="select-address" Component={CardAddress }/>
     </Routes>
    </Router>
   );

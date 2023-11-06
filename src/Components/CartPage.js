@@ -28,11 +28,12 @@ export const CartPage = () => {
     async function getCartData() {
       const response = await axios.get(cartApiUrl, requestHeaders);
       const cartProduct = response.data.cart;
-      
+
       setCartItem(cartProduct);
       dispatch({
-        type : "cartItem", payload:  cartProduct
-      })
+        type: "cartItem",
+        payload: cartProduct,
+      });
     }
 
     getCartData();
@@ -47,29 +48,27 @@ export const CartPage = () => {
       },
     };
     const response = await axios.delete(cartDeleteApiUrl, requestHeaders);
-    setCartItem(response.data.cart)
+    setCartItem(response.data.cart);
 
-dispatch({
-  type: "cartItem" , payload: response.data.cart
-})
-    
+    dispatch({
+      type: "cartItem",
+      payload: response.data.cart,
+    });
   };
-
-  
 
   return (
     <Layout>
       <div className="e-main-card-container">
-        <BillCard  cartData= {cartItem}/>
-        <CardAddress/>
+        <BillCard cartData={cartItem} />
+        <CardAddress />
 
         <div>
           {cartItem?.map((item) => {
             return (
               <CartProductCard
                 item={item}
-              cartArray ={setCartItem}
-                cartDeleteHandler={()=>cartDeleteHandler(item._id)}
+                cartArray={setCartItem}
+                cartDeleteHandler={() => cartDeleteHandler(item._id)}
               />
             );
           })}

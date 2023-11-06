@@ -14,7 +14,7 @@
     flex-direction: column;
     background-position: center;
     border-radius: 0.5rem;
-    min-height: 250px;
+    /* min-height: 250px; */
     min-width: 250px;
     background-color: gainsboro;
     color: var(--secoundary-color);
@@ -56,6 +56,12 @@
   .price-text{
     margin: 0;
   }
-  /* .my-cart-headding{
-    text-align: center;
-  } */
+  .select-btn{
+    padding: 5px 2rem;
+    border-radius:1rem;
+    background-color: blue;
+    color: white;
+  }
+  .select-btn :hover{
+    background-color: brown;
+  }

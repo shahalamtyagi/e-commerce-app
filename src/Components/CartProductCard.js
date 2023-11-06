@@ -5,8 +5,7 @@ import { AppContext } from "../Context";
 export const CartProductCard = (props) => {
   const Context = useContext(AppContext);
   const { dispatch, state } = Context;
-  const { item, cartDeleteHandler,cartArray} = props;
-
+  const { item, cartDeleteHandler, cartArray } = props;
 
   const wishlistApiUrl = "/api/user/wishlist";
 
@@ -21,14 +20,12 @@ export const CartProductCard = (props) => {
       authorization: encodedToken,
     },
   };
-  
 
   const movetoWishlistHandler = async () => {
     const res = await axios.post(wishlistApiUrl, requestBody, requestHeaders);
-      dispatch({ type: "wish-Item", payload: res.data.wishlist });
-    cartDeleteHandler()
+    dispatch({ type: "wish-Item", payload: res.data.wishlist });
+    cartDeleteHandler();
   };
-
 
   async function cartItemIncreaseHandler(_id, type) {
     const postApiUrl = `/api/user/cart/${_id}`;
@@ -47,8 +44,28 @@ export const CartProductCard = (props) => {
     };
 
     const response = await axios.post(postApiUrl, requestBody, requestHeaders);
-    cartArray(response.data.cart)
+    cartArray(response.data.cart);
   }
+
+  async function removeFromCartHandler(_id) {
+    const encodedToken = localStorage.getItem("encodedToken");
+
+    const requestHeaders = {
+      headers: {
+        authorization: encodedToken,
+      },
+    };
+
+    const cartlistdeleteApiUrl = `/api/user/cart/${_id}`;
+    const res = await axios.delete(cartlistdeleteApiUrl, requestHeaders);
+    dispatch({
+      type: "cartItem",
+      payload: res.data.cart,
+    });
+
+    cartDeleteHandler();
+  }
+  const inWishlist = state.wishListArray.some((pro) => pro._id === item._id);
   return (
     <div className="e-card-container">
       <div className="e-image-card-wrapper">
@@ -65,7 +82,7 @@ export const CartProductCard = (props) => {
             <b>Quantity :</b>
 
             <button
-            disabled= {item.qty===1}
+              disabled={item.qty === 1}
               className="quantity-minus-btn"
               onClick={() => cartItemIncreaseHandler(item._id, "decrement")}
             >
@@ -83,13 +100,25 @@ export const CartProductCard = (props) => {
         </div>
 
         <div className="e-card-btn">
-          <button className="Cancle-Btn" onClick={()=>cartDeleteHandler(item._id)}>
+          <button
+            className="Cancle-Btn"
+            onClick={() => cartDeleteHandler(item._id)}
+          >
             Remove from cart
           </button>
-
-          <button className="Cancle-Btn" onClick={movetoWishlistHandler}>Move to wishlist</button>
+          {inWishlist ? (
+            <button
+              className="Cancle-Btn"
+              onClick={() => removeFromCartHandler(item._id)}
+            >
+              Move to wishlist
+            </button>
+          ) : (
+            <button className="Cancle-Btn" onClick={movetoWishlistHandler}>
+              Move to wishlist
+            </button>
+          )}
           {/* <button className="Cancle-Btn" onClick={movetoWishlistHandler}>Move to wishlist</button> */}
-
         </div>
       </div>
     </div>

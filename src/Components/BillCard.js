@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import "./BillCard.css";
+import { Link } from "react-router-dom";
 
 export const BillCard = (props) => {
   const { cartData } = props;
@@ -19,6 +20,12 @@ export const BillCard = (props) => {
    return (
     <div className="cartpage">
       <div className="cart-page-wrapper">
+        <div>
+          <Link to="/select-address">
+        <button className="select-btn">select address</button>
+        </Link>
+        </div>
+
         <h3>
           <b className="price-text">PRICE-DETAILS</b>
         </h3>
