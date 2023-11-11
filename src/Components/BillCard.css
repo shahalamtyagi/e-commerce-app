@@ -57,11 +57,11 @@
     margin: 0;
   }
   .select-btn{
-    padding: 5px 2rem;
-    border-radius:1rem;
-    background-color: blue;
-    color: white;
-  }
-  .select-btn :hover{
-    background-color: brown;
+    padding: 3px 2rem;
+    border-radius:0.5rem;
+    /* background-color: blue; */
+    color: black;
+    border: 1px solid black;
+    font-size: large;
+    text-decoration: none;
   }

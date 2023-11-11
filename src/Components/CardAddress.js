@@ -1,36 +1,46 @@
+import { Layout } from "./Layout"
+import "./CardAddress.css"
+
  export const CardAddress = ()=>{
-   
-        <div className="main-card-address-wrapper">
-            <div>
-                <label for= "first-name">FIRST NAME</label>
-                <input type="text" id="Name" placeholder="ENTER FIRST NAME"/>
+    return(
+        <Layout>
+                <div className="main-card-address-wrapper">
 
-                <label for= "last-name">LAST NAME</label>
-                <input type="text" id="Name" placeholder="ENTER LAST NAME"/>
+            <div className="card-address-container">
+            <h2>Select Address</h2>
 
-                <label for= "">PINCODE</label>
-                <input type="number" id="Name" placeholder="ENTER PINCODE"/>
-
-                <label for= "">LOCALITY / AREA/STREET</label>
-                <input type="text" id="Name" placeholder="LOCALITY / AREA/STREET"/>
-
+                <label for= "first-name">NAME</label>
+                <input type="text" id="Name"/>
 
                 <label for= "mobile-number">MOBILE NUMBER</label>
-                <input type="number" id="Name" placeholder="ENTER MOBILE NO."/>
+                <input type="number" id="Name"/>
+
+                <label for= "">PINCODE</label>
+                <input type="number" id="Name"/>
+
+                <label for= "">LOCALITY / AREA</label>
+                <input type="text" id="Name" />
+
+
+             
 
                 <label for= "land-mark">LANDMARK</label>
-                <input type="number" id="Name" placeholder="ENTER LANDMARK"/>
+                <input type="number" id="Name"/>
 
                 <label for= "">DISTRICT/CITY</label>
-                <input type="text" id="Name" placeholder="ENTER DISTRICT/CITY"/>
+                <input type="text" id="Name" />
 
                 <label for= "">STATE</label>
-                <input type="text" id="Name" placeholder="ENTER STATE"/>
+                <input type="text" id="Name" />
 
                 <div className="save-btn-container">
                     <button className="save-btn">SAVE</button>
                 </div>
             </div>
         </div>
+         </Layout>
+    )
+   
+    
     
 }

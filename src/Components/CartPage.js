@@ -7,7 +7,6 @@ import { getData } from "./ResuableFunction";
 import { AppContext } from "../Context";
 import { CartProductCard } from "./CartProductCard";
 import { BillCard } from "./BillCard";
-import { CardAddress } from "./CardAddress";
 
 export const CartPage = () => {
   const Context = useContext(AppContext);
@@ -60,7 +59,7 @@ export const CartPage = () => {
     <Layout>
       <div className="e-main-card-container">
         <BillCard cartData={cartItem} />
-        <CardAddress />
+        {/* <CardAddress /> */}
 
         <div>
           {cartItem?.map((item) => {

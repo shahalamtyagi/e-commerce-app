@@ -6,7 +6,6 @@ import "./WishlistPage.css";
 import axios from "axios";
 import { ImgCard, WatchCard } from "./Card";
 import { WishListSelectedCard } from "./wislist-selected-card";
-import { CardAddress } from "./CardAddress";
 export const WishlistPage = () => {
   const [wishlistItem, setWishListItem] = useState([]);
   const wishlistApiUrl = "/api/user/wishlist";

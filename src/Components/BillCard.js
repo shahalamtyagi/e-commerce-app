@@ -21,9 +21,7 @@ export const BillCard = (props) => {
     <div className="cartpage">
       <div className="cart-page-wrapper">
         <div>
-          <Link to="/select-address">
-        <button className="select-btn">select address</button>
-        </Link>
+        <Link to="/select-address" className="select-btn">select address</Link>
         </div>
 
         <h3>

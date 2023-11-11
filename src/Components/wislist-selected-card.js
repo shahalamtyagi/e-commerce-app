@@ -7,7 +7,7 @@ export const WishListSelectedCard = (props) => {
   const context = useContext(AppContext);
   const { dispatch, state } = context;
 
-  const { item, wishlistList } = props;
+  const { wishlistList } = props;
   // // //   const inWishList = state.cartListCart?.some((pro) => pro._id === item._id);
 
   const cartApiUrl = "/api/user/cart";

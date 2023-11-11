@@ -7,6 +7,8 @@ import { SignupPage } from "./Components/SignInPage";
 import { CartPage } from "./Components/CartPage";
 import { WishlistPage } from "./Components/WishlistPage";
 import { CardAddress } from "./Components/CardAddress";
+import { AnyAddress } from "./Components/AnyAddress";
+import { RadioButtonAddress } from "./Components/RadioButtonAddress";
 
 // import { Layout } from "./Components/Layout";
 
@@ -23,7 +25,11 @@ function App() {
     <Route path="wishlistpage" Component={WishlistPage}/>
     <Route path="signinpage" Component={Login}/>
     <Route path="snpage" Component={Login}/>
-    <Route path="select-address" Component={CardAddress }/>
+    {/* <Route path="select-address" Component={AnyAddress}/> */}
+    <Route path="select-address" Component={RadioButtonAddress}/>
+
+    <Route path="AnyAddress" Component={CardAddress }/>
+
     </Routes>
    </Router>
   );
