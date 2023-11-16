@@ -2,28 +2,33 @@ import { useEffect, useState } from "react";
 import { Layout } from "./Layout";
 import "./RadioButtonAddress.css";
 import { getData } from "./ResuableFunction";
+import axios from "axios";
 export const RadioButtonAddress = () => {
 
   const [cardAddress, setCardAddress] = useState([]);
 
   const cardAddressApiUrl= "/api/user/address";
+  const encodedToken = localStorage.getItem("encodedToken");
 
-  async function cartAddress() {
-    const cardAddressApiUrl =  "/api/user/address";
-    const encodedToken = localStorage.getItem("encodedToken");
+  const requestHeaders = {
+    headers: {
+      authorization: encodedToken,
+    },
+  };
 
-    const requestHeaders = {
-      headers: {
-        authorization: encodedToken,
-      },
-    };
-    const response = await.get(cardAddressApiUrl, requestHeaders)
-  }
+ 
 
   useEffect(()=>{
-getData(cardAddressApiUrl,setCardAddress)
+    async function cardAddressApi() {
+      const cardAddressApiUrl =  "/api/user/address";
+  
+     
+      const response = await axios.get(cardAddressApiUrl, requestHeaders)
+      console.log(response);
+    }
+cardAddressApi(cardAddressApiUrl,setCardAddress)
   },[])
-  console.log(cardAddress);
+  // console.log(cardAddress);
   return (
     <Layout>
       <div className="main-radio-address-wrapper">
